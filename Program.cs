@@ -1,4 +1,6 @@
-﻿namespace ChallengeLabsWeek4._2
+﻿using System;
+
+namespace ChallengeLabsWeek4._2
 {
     internal class Program
     {
@@ -6,12 +8,8 @@
         {
             int num = GetInfoFromUser("Please enter a number.");
             int[] ints = new int[num];
-            Console.WriteLine($"Input {num} elements in the array:");
-
-            for (int i = 0; i < num; i++) 
-            {
-                ints[i] = GetInfoFromUser($"Element {i + 1}: ");
-            }
+            
+            ints = FillArray(ints, num);
 
             Dictionary<int, int> selectionCount = new Dictionary<int, int>();
 
@@ -51,9 +49,21 @@
             }while (userInput == "");
         }
 
+        internal static int[] FillArray(int[] array, int num)
+        {
+            Console.WriteLine($"Input {num} elements in the array:");
+
+            for (int i = 0; i < num; i++)
+            {
+                array[i] = GetInfoFromUser($"Element {i + 1}: ");
+            }
+            return array;
+        }
+
         internal static void PrintResults(int i, int j, string occurance)
         {
             Console.WriteLine($"{i} occurs {j} {occurance}");
         }
+
     }
 }
